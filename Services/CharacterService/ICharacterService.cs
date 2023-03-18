@@ -8,7 +8,7 @@ namespace rpg_game.Services.CharacterService
 {
     public interface ICharacterService
     {
-        Task<ServiceResponse<List<CharacterResponseDTO>>> GetAllCharacters();
+        Task<ServiceResponse<List<CharacterResponseDTO>>> GetAllCharacters(int userId);
         Task<ServiceResponse<CharacterResponseDTO>> GetCharacterById(int id);
         Task<ServiceResponse<List<CharacterResponseDTO>>> AddCharacter(CharacterRequestDTO newCharacter);
         Task<ServiceResponse<CharacterResponseDTO>> UpdateCharacter(int id, CharacterRequestDTO updatedCharacter);
