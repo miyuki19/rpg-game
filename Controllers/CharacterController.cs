@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace rpg_game.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Normal, Admin")]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : ControllerBase
@@ -25,7 +25,8 @@ namespace rpg_game.Controllers
         public async Task<ActionResult<ServiceResponse<List<CharacterResponseDTO>>>> Get()
         {
             int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-            return Ok(await _chacterService.GetAllCharacters(userId));
+            string userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)!.Value;
+            return Ok(await _chacterService.GetAllCharacters(userId, userRole));
         }
 
         [HttpGet("{id}")]

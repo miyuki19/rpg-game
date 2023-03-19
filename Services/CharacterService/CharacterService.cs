@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using rpg_game.DTOs.Character;
 
@@ -29,11 +30,14 @@ namespace rpg_game.Services.CharacterService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<CharacterResponseDTO>>> GetAllCharacters(int userId)
+        public async Task<ServiceResponse<List<CharacterResponseDTO>>> GetAllCharacters(int userId, string userRole)
         {
             var serviceResponse = new ServiceResponse<List<CharacterResponseDTO>>();
-            var dbCharacter = await _context.Characters.Where(c => c.User!.Id == userId).ToListAsync();
-            serviceResponse.Data = dbCharacter.Select(c => _mapper.Map<CharacterResponseDTO>(c)).ToList();
+            var dbCharacters =
+                userRole.Equals("Admin") ?
+                await _context.Characters.ToListAsync() :
+                await _context.Characters.Where(c => c.User!.Id == userId).ToListAsync();
+            serviceResponse.Data = dbCharacters.Select(c => _mapper.Map<CharacterResponseDTO>(c)).ToList();
             return serviceResponse;
         }
 
