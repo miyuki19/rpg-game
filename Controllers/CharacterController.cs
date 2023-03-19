@@ -24,9 +24,7 @@ namespace rpg_game.Controllers
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<CharacterResponseDTO>>>> Get()
         {
-            int userId = int.Parse(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)!.Value);
-            string userRole = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)!.Value;
-            return Ok(await _chacterService.GetAllCharacters(userId, userRole));
+            return Ok(await _chacterService.GetAllCharacters());
         }
 
         [HttpGet("{id}")]
