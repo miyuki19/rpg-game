@@ -1,9 +1,10 @@
 global using rpg_game.Models;
-global using rpg_game.Services.CharacterService;
-global using rpg_game.Services.UserService;
 global using AutoMapper;
 global using Microsoft.EntityFrameworkCore;
 global using rpg_game.Data;
+global using rpg_game.Services.CharacterService;
+global using rpg_game.Services.UserService;
+global using rpg_game.Services.WeaponService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
@@ -38,6 +39,8 @@ builder.Services.AddSingleton(mapper);
 
 builder.Services.AddScoped<ICharacterService, CharacterService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
+
 var appToken = Environment.GetEnvironmentVariable("TOKEN_SECRET");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

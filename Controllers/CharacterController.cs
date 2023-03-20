@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using rpg_game.DTOs.Character;
-using System.Security.Claims;
 
 namespace rpg_game.Controllers
 {
@@ -49,6 +48,12 @@ namespace rpg_game.Controllers
         public async Task<ActionResult<ServiceResponse<List<CharacterResponseDTO>>>> RemoveCharacter(int id)
         {
             return Ok(await _chacterService.RemoveCharacter(id));
+        }
+
+        [HttpPost("Skill")]
+        public async Task<ActionResult<ServiceResponse<CharacterResponseDTO>>> AddCharacterSkill(CharacterSkillAddingDTO newCharacterSkill)
+        {
+            return Ok(await _chacterService.AddCharacterSkill(newCharacterSkill));
         }
     }
 }

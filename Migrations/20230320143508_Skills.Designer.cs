@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using rpg_game.Data;
 
@@ -10,9 +11,11 @@ using rpg_game.Data;
 namespace rpg_game.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230320143508_Skills")]
+    partial class Skills
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.4");
@@ -83,26 +86,6 @@ namespace rpg_game.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Skills");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Damage = 25,
-                            Name = "Straight Slash"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Damage = 50,
-                            Name = "Thunder Fire"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Damage = 30,
-                            Name = "Super Charge"
-                        });
                 });
 
             modelBuilder.Entity("rpg_game.Models.User", b =>

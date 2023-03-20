@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using rpg_game.DTOs.Character;
+using rpg_game.DTOs.Skill;
+using rpg_game.DTOs.Weapon;
 
 namespace rpg_game
 {
@@ -15,6 +17,8 @@ namespace rpg_game
             {
                 cfg.CreateMap<Character, CharacterResponseDTO>();
                 cfg.CreateMap<CharacterRequestDTO, Character>();
+                cfg.CreateMap<Weapon, WeaponGettingDTO>();
+                cfg.CreateMap<Skill, SkillGettingDTO>();
             });
         }
     }
