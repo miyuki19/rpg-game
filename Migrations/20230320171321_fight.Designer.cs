@@ -11,8 +11,8 @@ using rpg_game.Data;
 namespace rpg_game.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230320171321_fight")]
-    partial class fight
+    [Migration("20230320171321_Fight")]
+    partial class Fight
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

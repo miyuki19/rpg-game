@@ -31,5 +31,11 @@ namespace rpg_game.Controllers
         {
             return Ok(await _fightService.SkillAttack(attack));
         }
+
+        [HttpPost("AutoFight")]
+        public async Task<ActionResult<ServiceResponse<AutoFightResultDTO>>> AutoFight(AutoFightRequestDTO autoFight)
+        {
+            return Ok(await _fightService.AutoFight(autoFight));
+        }
     }
 }

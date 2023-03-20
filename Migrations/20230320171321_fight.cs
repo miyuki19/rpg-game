@@ -5,7 +5,7 @@
 namespace rpg_game.Migrations
 {
     /// <inheritdoc />
-    public partial class fight : Migration
+    public partial class Fight : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

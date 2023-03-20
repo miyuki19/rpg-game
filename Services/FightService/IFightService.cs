@@ -10,5 +10,6 @@ namespace rpg_game.Services.FightService
     {
         Task<ServiceResponse<AttackResultDTO>> WeaponAttack(WeaponAttackDTO attack);
         Task<ServiceResponse<AttackResultDTO>> SkillAttack(SkillAttackDTO attack);
+        Task<ServiceResponse<AutoFightResultDTO>> AutoFight(AutoFightRequestDTO autoFight);
     }
 }
