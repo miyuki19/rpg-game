@@ -9,9 +9,12 @@ namespace rpg_game.Services.FightService
     public class FightService : IFightService
     {
         private readonly DataContext _context;
-        public FightService(DataContext context)
+        private readonly IMapper _mapper;
+
+        public FightService(DataContext context, IMapper mapper)
         {
             this._context = context;
+            this._mapper = mapper;
         }
 
         public async Task<ServiceResponse<AutoFightResultDTO>> AutoFight(AutoFightRequestDTO autoFight)
@@ -67,7 +70,7 @@ namespace rpg_game.Services.FightService
                         {
                             defeated = true;
                             attacker.Victories++;
-                            opponent.Defeats--;
+                            opponent.Defeats++;
                             serviceResponse.Data.Log.Add($"{opponent.Name} has been defeated!");
                             serviceResponse.Data.Log.Add($"{attacker.Name} won with {attacker.HitPoints} HP left!");
                             break;
@@ -216,6 +219,24 @@ namespace rpg_game.Services.FightService
             }
 
             return damage;
+        }
+
+        public async Task<ServiceResponse<List<HighScoreDTO>>> GetHighScore()
+        {
+
+
+            var characters = await _context.Characters
+                .Where(c => c.Fights > 0)
+                .OrderByDescending(c => c.Victories)
+                .ThenBy(c => c.Defeats)
+                .ToListAsync();
+
+            var serviceResponse = new ServiceResponse<List<HighScoreDTO>>
+            {
+                Data = characters.Select(c => _mapper.Map<HighScoreDTO>(c)).ToList()
+            };
+
+            return serviceResponse;
         }
     }
 }

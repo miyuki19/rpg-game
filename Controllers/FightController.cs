@@ -37,5 +37,11 @@ namespace rpg_game.Controllers
         {
             return Ok(await _fightService.AutoFight(autoFight));
         }
+
+        [HttpGet("HighScore")]
+        public async Task<ActionResult<ServiceResponse<List<HighScoreDTO>>>> GetHighScore()
+        {
+            return Ok(await _fightService.GetHighScore());
+        }
     }
 }
