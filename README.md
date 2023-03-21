@@ -7,7 +7,22 @@ This is an RPG game API built using .NET Core MVC and utilizing .NET 7 SDK. The 
 - .NET 7 SDK
 - Sqlite
 
-# Usage
+## API Documentation
+
+The API documentation can be accessed by running the application and visiting the following URL:
+
+```
+https://localhost:<port>/swagger
+```
+
+![swagger_test.png](https://github.com/miyuki19/rpg-game/blob/main/swagger_test.PNG)
+
+## Security
+
+JWT authentication is implemented using the Microsoft.AspNetCore.Authentication.JwtBearer package.
+The .env file contains the secret key used for JWT generation and validation.
+
+## Usage
 
 The API contains the following endpoints:
 
@@ -43,15 +58,4 @@ Example Request Body:
 
 ## Fight (Attack by weapon, skill, auto combat)
 
-## API Documentation
 
-The API documentation can be accessed by running the application and visiting the following URL:
-
-```
-https://localhost:<port>/swagger
-```
-
-## Security
-
-JWT authentication is implemented using the Microsoft.AspNetCore.Authentication.JwtBearer package.
-The .env file contains the secret key used for JWT generation and validation.
