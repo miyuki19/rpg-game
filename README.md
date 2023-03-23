@@ -1,6 +1,6 @@
-# RPG Game API using .NET Core MVC
+# RPG Game API using .NET Core Web API
 
-This is an RPG game API built using .NET Core MVC and utilizing .NET 7 SDK. The game uses SQLite for data storage and Swagger for API documentation. Authentication is implemented using JWT.
+This is an RPG game API built using .NET Core Web API and utilizing .NET 7 SDK. The game uses SQLite for data storage and Swagger for API documentation. Authentication is implemented using JWT.
 
 ## Prerequisite
 
